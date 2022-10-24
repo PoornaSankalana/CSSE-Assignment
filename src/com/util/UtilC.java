@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.Properties;
 import com.util.*;
 
-
+/**
+ * this method is for the catch properties from config.properties
+ */
 public class UtilC {
 
 	public static final Properties properties = new Properties();

@@ -18,6 +18,9 @@ import java.util.Map;
 import com.util.*;
 import com.model.*;
 
+/**
+ * This is the GetEmployeeServices Class
+ */
 public class GetEmployeeServices extends UtilC {
 	public static final Logger Log = Logger.getLogger(GetEmployeeServices.class.getName());
 
@@ -26,6 +29,9 @@ public class GetEmployeeServices extends UtilC {
 	private static Statement statement;
 	private PreparedStatement prepared_statement;
 
+	/*
+	* this method creates the connection with the database
+	*/
 	public GetEmployeeServices() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -37,7 +43,12 @@ public class GetEmployeeServices extends UtilC {
 		}
 	}
 
-	public void EmployeesFormXML() {
+	/*
+	* this method readXMLXpathValues() return ArrayList that comprises
+	* employee details as map elements. Read each map element and
+	* assign to employee object
+	 */
+	public void EmployeesFromXML() {
 
 		try {
 			int size = UtilTransform.xmlXpaths().size();
@@ -59,17 +70,23 @@ public class GetEmployeeServices extends UtilC {
 		}
 	}
 
+	/*
+	* this method creates tables in the database
+	 */
 	public void employeeTableCreate() {
 		try {
 			statement = connection.createStatement();
 			statement.executeUpdate(UtilQ.Q("q2"));
 			statement.executeUpdate(UtilQ.Q("q1"));
 		} catch (Exception e) {
-			//Used loggers
+			// Used loggers
 			Log.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
+	/*
+	* this method add employees to the database
+	 */
 	public void EmployeeAdd() {
 		try {
 			prepared_statement = connection.prepareStatement(UtilQ.Q("q3"));
@@ -92,6 +109,10 @@ public class GetEmployeeServices extends UtilC {
 		}
 	}
 
+	/*
+	 * this method get employees from his id
+	 * add data into an employee object and display them
+	 */
 	public void GetEmployeeByID(String eid) {
 
 		Employee employee = new Employee();
@@ -115,6 +136,9 @@ public class GetEmployeeServices extends UtilC {
 		}
 	}
 
+	/*
+	 * this method delete employees from his id
+	 */
 	public void EmployeeDelete(String eid) {
 
 		try {
@@ -127,6 +151,10 @@ public class GetEmployeeServices extends UtilC {
 		}
 	}
 
+	/*
+	 * this method display employees and add
+	 * it into a arrayList and display the list
+	 */
 	public void employeeDisplay() {
 
 		ArrayList<Employee> arrayList = new ArrayList<Employee>();
@@ -148,7 +176,11 @@ public class GetEmployeeServices extends UtilC {
 		}
 		employeeOutput(arrayList);
 	}
-	
+
+	/*
+	* this method is for display the employee details
+	* and this will be call inside the other methods
+	*/
 	public void employeeOutput(ArrayList<Employee> list){
 		
 		System.out.println("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"

@@ -1,5 +1,8 @@
 package com.model;
 
+/**
+ * This is for the employee model class
+ */
 public class Employee {
 
 	public String EmployeeID;

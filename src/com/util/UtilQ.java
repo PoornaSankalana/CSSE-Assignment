@@ -8,9 +8,8 @@ import org.w3c.dom.Element;
 public class UtilQ extends UtilC {
 	
 	/**
-	 * @param id
-	 * @throws Exception
-	 * @return e.getTextContent().trim()
+	 * this method get queries from
+	 * EmployeeQuery.xml
 	 */
 	
 	public static String Q(String id) throws Exception {
